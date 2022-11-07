@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
 
   (1..NUM_WORKER_NODES).each do |i|
 
-  config.vm.define "node0#{i}" do |cksworker|
+  config.vm.define "cks-worker0#{i}" do |cksworker|
     cksworker.vm.hostname = "cks-worker0#{i}"
     cksworker.vm.network "private_network", ip: IP_NW + "#{IP_START + i}"
     cksworker.vm.provider "virtualbox" do |vb|

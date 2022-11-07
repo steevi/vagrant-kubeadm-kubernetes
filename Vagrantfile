@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", env: {"IP_NW" => IP_NW, "IP_START" => IP_START}, inline: <<-SHELL
       apt-get update -y
       echo "$IP_NW$((IP_START)) cks-master" >> /etc/hosts
-      echo "$IP_NW$((IP_START+1)) cks-worker" >> /etc/hosts
+      echo "$IP_NW$((IP_START+1)) cks-worker01" >> /etc/hosts
   SHELL
 
   config.vm.box = "generic/ubuntu2004"

@@ -21,8 +21,7 @@ Vagrant.configure("2") do |config|
         vb.memory = 4096
         vb.cpus = 2
     end
-    cksmaster.vm.provision "shell", path: "scripts/common.sh"
-    cksmaster.vm.provision "shell", path: "scripts/master.sh"
+    cksmaster.vm.provision "shell", path: "scripts/install_master.sh"
   end
 
   (1..NUM_WORKER_NODES).each do |i|
@@ -34,8 +33,7 @@ Vagrant.configure("2") do |config|
         vb.memory = 4096
         vb.cpus = 2
     end
-    cksworker.vm.provision "shell", path: "scripts/common.sh"
-    cksworker.vm.provision "shell", path: "scripts/node.sh"
+    cksworker.vm.provision "shell", path: "scripts/install_worker.sh"
   end
 
   end

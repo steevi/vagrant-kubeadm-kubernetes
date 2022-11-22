@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
       echo "$IP_NW$((IP_START+1)) cks-worker01" >> /etc/hosts
   SHELL
 
-  config.vm.box = "generic/ubuntu2004"
+  config.vm.box = "bento/ubuntu-20.04"
   config.vm.box_check_update = true
   config.vm.synced_folder ".", "/vagrant", disabled: false
 

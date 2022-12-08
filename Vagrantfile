@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
         vb.memory = 4096
         vb.cpus = 2
     end
-    cksworker.vm.provision "shell", path: "scripts/install_worker.sh"
+    # cksworker.vm.provision "shell", path: "scripts/install_worker.sh"
   end
 
   end

@@ -15,11 +15,12 @@ sed -i '/\sswap\s/ s/^\(.*\)$/#\1/g' /etc/fstab
 
 ### install podman
 . /etc/os-release
-echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
-curl -L "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/Release.key" | sudo apt-key add -
+apt-get install curl wget gnupg2 -y
+sh -c "echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${VERSION_ID}/Release.key -O- | apt-key add -
 apt-get update -qq
 apt-get -qq -y install podman cri-tools containers-common
-rm /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list
+rm /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 cat <<EOF | sudo tee /etc/containers/registries.conf
 [registries.search]
 registries = ['docker.io']
